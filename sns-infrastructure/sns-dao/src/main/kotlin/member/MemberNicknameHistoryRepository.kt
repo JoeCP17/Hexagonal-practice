@@ -1,0 +1,4 @@
+package member
+
+interface MemberNicknameHistoryRepository {
+}

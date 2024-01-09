@@ -4,7 +4,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 data class Member(
-    val id: Long,
+    val id: Long = 0,
     val nickName: String,
     val email: String,
     val birthDay: LocalDate,
@@ -13,6 +13,10 @@ data class Member(
 
     init {
         validateNickname(nickName)
+    }
+
+    fun isMemberNotInitialized(): Boolean {
+        return id == 0L
     }
 
 
