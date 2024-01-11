@@ -1,4 +1,0 @@
-package post
-
-interface PostRepository {
-}

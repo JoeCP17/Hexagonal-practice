@@ -7,4 +7,6 @@ bootJar.enabled = false
 jar.enabled = true
 
 dependencies {
+    implementation(project(":sns-domain"))
+    implementation("org.springframework:spring-context")
 }

@@ -11,5 +11,6 @@ dependencies {
     implementation (project(":sns-application"))
 
     implementation ("org.springframework.boot:spring-boot-starter-jdbc")
+    implementation ("org.springframework.data:spring-data-commons:3.0.3")
     runtimeOnly ("com.mysql:mysql-connector-j")
 }

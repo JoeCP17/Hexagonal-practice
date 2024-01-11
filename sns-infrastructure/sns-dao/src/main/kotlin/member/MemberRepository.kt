@@ -1,4 +1,0 @@
-package member
-
-interface MemberRepository {
-}

@@ -1,4 +1,0 @@
-package follow
-
-interface FollowRepository {
-}
