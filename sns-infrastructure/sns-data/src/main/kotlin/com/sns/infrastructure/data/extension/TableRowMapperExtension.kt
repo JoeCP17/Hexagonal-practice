@@ -1,4 +1,4 @@
-package com.sns.dao.extension
+package com.sns.infrastructure.data.extension
 
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper

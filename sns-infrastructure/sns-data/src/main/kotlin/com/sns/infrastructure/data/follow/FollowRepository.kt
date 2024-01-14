@@ -1,4 +1,4 @@
-package com.sns.dao.follow
+package com.sns.infrastructure.data.follow
 
 import com.sns.domain.follow.Follow
 

@@ -1,7 +1,7 @@
-package com.sns.dao.follow.jdbc
+package com.sns.infrastructure.data.follow.jdbc
 
 import com.sns.domain.follow.Follow
-import com.sns.dao.follow.FollowRepository
+import com.sns.infrastructure.data.follow.FollowRepository
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.stereotype.Repository
 

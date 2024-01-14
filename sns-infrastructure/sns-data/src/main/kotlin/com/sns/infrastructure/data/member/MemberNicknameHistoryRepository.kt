@@ -1,4 +1,4 @@
-package com.sns.dao.member
+package com.sns.infrastructure.data.member
 
 import com.sns.domain.member.MemberNicknameHistory
 

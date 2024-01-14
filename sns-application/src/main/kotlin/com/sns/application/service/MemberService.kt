@@ -5,10 +5,10 @@ import com.sns.application.dto.member.request.RegisterMemberCommand
 import com.sns.application.dto.member.response.MemberHistoryResponse
 import com.sns.application.dto.member.response.MemberResponse
 import com.sns.application.mapper.MemberMapperFactory
-import com.sns.application.port.`in`.RequestMemberHistoryUsecase
-import com.sns.application.port.`in`.RequestMemberUsecase
-import com.sns.application.port.out.MemberHistoryPersistencePort
-import com.sns.application.port.out.MemberPersistencePort
+import com.sns.application.port.`in`.member.RequestMemberHistoryUsecase
+import com.sns.application.port.`in`.member.RequestMemberUsecase
+import com.sns.application.port.out.member.MemberPersistencePort
+import com.sns.application.port.out.member.MemberHistoryPersistencePort
 import org.springframework.stereotype.Service
 
 @Service

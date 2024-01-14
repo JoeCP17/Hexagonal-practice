@@ -1,8 +1,8 @@
-package com.sns.dao.member.jdbc
+package com.sns.infrastructure.data.member.jdbc
 
-import com.sns.dao.extension.TableRowMapperExtension
+import com.sns.infrastructure.data.extension.TableRowMapperExtension
 import com.sns.domain.member.MemberNicknameHistory
-import com.sns.dao.member.MemberNicknameHistoryRepository
+import com.sns.infrastructure.data.member.MemberNicknameHistoryRepository
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate

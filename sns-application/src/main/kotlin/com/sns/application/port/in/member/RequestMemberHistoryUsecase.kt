@@ -1,4 +1,4 @@
-package com.sns.application.port.`in`
+package com.sns.application.port.`in`.member
 
 import com.sns.application.dto.member.response.MemberHistoryResponse
 

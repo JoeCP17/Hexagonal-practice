@@ -1,7 +1,7 @@
-package com.sns.dao.adapter
+package com.sns.infrastructure.data.adapter
 
-import com.sns.application.port.out.MemberHistoryPersistencePort
-import com.sns.dao.member.MemberNicknameHistoryRepository
+import com.sns.application.port.out.member.MemberHistoryPersistencePort
+import com.sns.infrastructure.data.member.MemberNicknameHistoryRepository
 import com.sns.domain.member.MemberNicknameHistory
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional

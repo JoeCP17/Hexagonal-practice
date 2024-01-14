@@ -4,8 +4,8 @@ import com.sns.api.dto.BaseResponseDto
 import com.sns.application.dto.member.request.RegisterMemberCommand
 import com.sns.application.dto.member.response.MemberHistoryResponse
 import com.sns.application.dto.member.response.MemberResponse
-import com.sns.application.port.`in`.RequestMemberHistoryUsecase
-import com.sns.application.port.`in`.RequestMemberUsecase
+import com.sns.application.port.`in`.member.RequestMemberHistoryUsecase
+import com.sns.application.port.`in`.member.RequestMemberUsecase
 import org.springframework.web.bind.annotation.*
 
 @RestController

@@ -1,4 +1,4 @@
-package com.sns.dao.post
+package com.sns.infrastructure.data.post
 
 import org.springframework.data.domain.Sort
 

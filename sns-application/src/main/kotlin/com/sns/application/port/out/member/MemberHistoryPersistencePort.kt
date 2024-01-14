@@ -1,4 +1,4 @@
-package com.sns.application.port.out
+package com.sns.application.port.out.member
 
 import com.sns.domain.member.MemberNicknameHistory
 

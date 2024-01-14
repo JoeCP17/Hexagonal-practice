@@ -1,8 +1,8 @@
-package com.sns.dao.post.jdbc
+package com.sns.infrastructure.data.post.jdbc
 
-import com.sns.dao.extension.TableRowMapperExtension
-import com.sns.dao.post.PageHelper
-import com.sns.dao.post.PostRepository
+import com.sns.infrastructure.data.extension.TableRowMapperExtension
+import com.sns.infrastructure.data.post.PageHelper
+import com.sns.infrastructure.data.post.PostRepository
 import com.sns.domain.post.DailyPostCount
 import com.sns.domain.post.Post
 import org.springframework.data.domain.Page
