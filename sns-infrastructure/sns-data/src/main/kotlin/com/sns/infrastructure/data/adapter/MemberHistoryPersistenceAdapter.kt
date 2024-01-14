@@ -14,4 +14,10 @@ class MemberHistoryPersistenceAdapter(
     override fun saveMemberHistory(memberNicknameHistory: MemberNicknameHistory) {
         memberNicknameHistoryRepository.save(memberNicknameHistory)
     }
+
+    @Transactional(readOnly = true)
+    override fun getMemberNicknameHistoriesByMemberId(memberId: Long): List<MemberNicknameHistory> {
+        return memberNicknameHistoryRepository.findAllByMemberId(memberId)
+    }
+
 }

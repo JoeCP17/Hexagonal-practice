@@ -7,8 +7,4 @@ interface MemberPersistencePort {
 
     fun getMemberByMemberId(memberId: Long): Member
 
-    fun changeNicknameByMemberIdAndNickname(memberId: Long, nickname: String)
-
-    fun getNicknameHistoriesByMemberId(memberId: Long)
-
 }

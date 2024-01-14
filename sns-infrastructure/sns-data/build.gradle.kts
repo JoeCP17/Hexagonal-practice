@@ -12,5 +12,8 @@ dependencies {
 
     implementation ("org.springframework.boot:spring-boot-starter-jdbc")
     implementation ("org.springframework.data:spring-data-commons:3.0.3")
+
+    annotationProcessor("jakarta.annotation:jakarta.annotation-api")
+    annotationProcessor("jakarta.persistence:jakarta.persistence-api")
     runtimeOnly ("com.mysql:mysql-connector-j")
 }

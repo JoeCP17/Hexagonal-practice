@@ -11,6 +11,7 @@ apply(plugin = "org.springframework.boot")
 dependencies {
     implementation(project(":sns-domain"))
     implementation(project(":sns-application"))
+    implementation(project(":sns-infrastructure:sns-data"))
 
     // spring boot
     implementation("org.springframework.boot:spring-boot-starter-web")

@@ -3,15 +3,16 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("org.springframework.boot") version "3.1.2"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    kotlin("jvm") version "1.6.10"
-    kotlin("plugin.spring") version "1.6.10" apply false
+    kotlin("jvm") version "1.8.10"
+    kotlin("plugin.spring") version "1.8.10" apply false
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_17
-
 allprojects {
+    apply(plugin = "java")
+
     group = "com.sns"
-    version = "1.0-SNAPSHOT"
+    version = "1.0.0"
+    java.sourceCompatibility = JavaVersion.VERSION_17
 
     repositories {
         mavenCentral()
@@ -19,7 +20,6 @@ allprojects {
 }
 
 subprojects {
-    apply(plugin = "java")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")

@@ -1,7 +1,11 @@
 package com.sns.application.service
 
-import com.sns.application.dto.member.ChangeNicknameCommand
-import com.sns.application.dto.member.RegisterMemberCommand
+import com.sns.application.dto.member.request.ChangeNicknameCommand
+import com.sns.application.dto.member.request.RegisterMemberCommand
+import com.sns.application.dto.member.response.MemberHistoryResponse
+import com.sns.application.dto.member.response.MemberResponse
+import com.sns.application.mapper.MemberMapperFactory
+import com.sns.application.port.`in`.RequestMemberHistoryUsecase
 import com.sns.application.port.`in`.RequestMemberUsecase
 import com.sns.application.port.out.MemberHistoryPersistencePort
 import com.sns.application.port.out.MemberPersistencePort
@@ -11,7 +15,7 @@ import org.springframework.stereotype.Service
 class MemberService(
     private val memberPersistencePort: MemberPersistencePort,
     private val memberHistoryPersistencePort: MemberHistoryPersistencePort
-) : RequestMemberUsecase {
+) : RequestMemberUsecase, RequestMemberHistoryUsecase {
 
     /**
      * 1. 목표는 회원정보를 등록한다.
@@ -30,15 +34,22 @@ class MemberService(
      */
     override fun changeNickname(changeNicknameCommand: ChangeNicknameCommand) {
         val member = memberPersistencePort.getMemberByMemberId(changeNicknameCommand.memberId)
-        )
+        val afterMember = member.changeNickname(changeNicknameCommand.nickname)
+
+        memberPersistencePort.saveMember(afterMember)
+        memberHistoryPersistencePort.saveMemberHistory(afterMember.toMemberNicknameHistory())
     }
 
-    override fun getMember(memberId: Long) {
-        TODO("Not yet implemented")
+    override fun getMember(memberId: Long): MemberResponse {
+        val member = memberPersistencePort.getMemberByMemberId(memberId = memberId)
+        return MemberMapperFactory.toMemberResponse(member = member)
     }
 
-    override fun getNicknameHistories(memberId: Long) {
-        TODO("Not yet implemented")
+    override fun getNicknameHistories(memberId: Long): List<MemberHistoryResponse> {
+        val member = memberPersistencePort.getMemberByMemberId(memberId = memberId)
+
+        return memberHistoryPersistencePort.getMemberNicknameHistoriesByMemberId(memberId = memberId)
+            .map { MemberMapperFactory.toMemberHistoryResponse(member = member) }
     }
 
 }

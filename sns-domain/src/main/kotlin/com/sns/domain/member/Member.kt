@@ -26,6 +26,11 @@ data class Member(
         )
     }
 
+    fun changeNickname(nickname: String) : Member {
+        validateNickname(nickname)
+        return this.copy(nickName = nickname)
+    }
+
 
     private fun validateNickname(nickname: String) {
         if (nickname.length > MAX_NICKNAME_LENGTH) {

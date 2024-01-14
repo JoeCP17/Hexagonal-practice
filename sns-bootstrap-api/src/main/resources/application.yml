@@ -1,6 +1,6 @@
 spring:
   profiles:
-    include: jpa
+    include: data
 
 springdoc:
   swagger-ui:

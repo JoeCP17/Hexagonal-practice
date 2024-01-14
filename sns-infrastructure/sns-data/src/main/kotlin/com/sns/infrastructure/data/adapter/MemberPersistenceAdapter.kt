@@ -11,23 +11,14 @@ import org.springframework.transaction.annotation.Transactional
 class MemberPersistenceAdapter(
     private val memberRepository: MemberRepository
 ) : MemberPersistencePort {
-    @Transactional(readOnly = true)
-    override fun getNicknameHistoriesByMemberId(memberId: Long) {
-        val member = memberRepository.findById(id = memberId)
-    }
 
     @Transactional(readOnly = true)
-    override fun getMemberByMemberId(memberId: Long) {
-        TODO("Not yet implemented")
+    override fun getMemberByMemberId(memberId: Long): Member {
+        return memberRepository.findById(memberId)
     }
 
     override fun saveMember(member: Member) {
-        TODO("Not yet implemented")
+        memberRepository.save(member)
     }
-
-    override fun changeNicknameByMemberIdAndNickname(memberId: Long, nickname: String) {
-        TODO("Not yet implemented")
-    }
-
 
 }

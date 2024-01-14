@@ -6,7 +6,7 @@ interface MemberRepository {
 
     fun findAllByIdIn(ids: List<Long>): List<Member>
 
-    fun findById(id: Long): Member?
+    fun findById(id: Long): Member
 
     fun save(member: Member): Member
 }

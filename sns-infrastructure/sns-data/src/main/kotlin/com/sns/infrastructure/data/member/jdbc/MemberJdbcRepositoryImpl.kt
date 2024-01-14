@@ -24,7 +24,7 @@ class MemberJdbcRepositoryImpl(
         return namedParameterJdbcTemplate.query(sql, params, ROW_MAPPER)
     }
 
-    override fun findById(id: Long): Member? {
+    override fun findById(id: Long): Member {
         val sql = String.format(
             "select * from %s where id = :id",
             TABLE
@@ -32,7 +32,7 @@ class MemberJdbcRepositoryImpl(
         val params = MapSqlParameterSource()
             .addValue("id", id)
 
-        return namedParameterJdbcTemplate.query(sql, params, ROW_MAPPER).firstOrNull()
+        return namedParameterJdbcTemplate.query(sql, params, ROW_MAPPER).first()
     }
 
     override fun save(member: Member): Member {
