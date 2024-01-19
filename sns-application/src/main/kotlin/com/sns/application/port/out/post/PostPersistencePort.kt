@@ -12,7 +12,11 @@ interface PostPersistencePort {
 
     fun groupByCreatedDate(dailyPostCountCommand: DailyPostCountCommand): List<DailyPostCount>
 
-    fun findAllByIdAndMemberIdAndDescAboutCursor(memberId: Long, cursorId: Long, size: Long): List<Post>
+    fun findAllByIdAndMemberIdAndDescAboutCursor(
+        memberId: Long,
+        cursorId: Long,
+        size: Long
+    ): List<Post>
 
     fun findAllByMemberIdAndDescAboutCursor(memberId: Long, size: Long): List<Post>
 

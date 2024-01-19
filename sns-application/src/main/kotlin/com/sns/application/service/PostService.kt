@@ -81,7 +81,10 @@ class PostService(
         )
     }
 
-    private fun findByAllByCursorKey(memberIds: List<Long>, cursorRequest: CursorRequest): List<Post> {
+    private fun findByAllByCursorKey(
+        memberIds: List<Long>,
+        cursorRequest: CursorRequest
+    ): List<Post> {
         if (cursorRequest.notHasKey()) {
             postPersistencePort.findAllByMemberIdsAndDescAboutCursor(
                 memberIds = memberIds,

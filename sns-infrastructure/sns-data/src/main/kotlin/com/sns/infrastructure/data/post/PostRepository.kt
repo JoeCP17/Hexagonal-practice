@@ -1,10 +1,9 @@
 package com.sns.infrastructure.data.post
 
 import com.sns.application.dto.post.DailyPostCountCommand
-import com.sns.application.dto.post.DailyPostCountResponse
 import com.sns.domain.post.DailyPostCount
-import org.springframework.data.domain.Page
 import com.sns.domain.post.Post
+import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 
 

@@ -1,11 +1,11 @@
 package com.sns.infrastructure.data.post.jdbc
 
 import com.sns.application.dto.post.DailyPostCountCommand
+import com.sns.domain.post.DailyPostCount
+import com.sns.domain.post.Post
 import com.sns.infrastructure.data.extension.TableRowMapperExtension
 import com.sns.infrastructure.data.post.PageHelper
 import com.sns.infrastructure.data.post.PostRepository
-import com.sns.domain.post.DailyPostCount
-import com.sns.domain.post.Post
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable

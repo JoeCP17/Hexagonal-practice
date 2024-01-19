@@ -1,8 +1,8 @@
 package com.sns.infrastructure.data.adapter
 
 import com.sns.application.port.out.member.MemberHistoryPersistencePort
-import com.sns.infrastructure.data.member.MemberNicknameHistoryRepository
 import com.sns.domain.member.MemberNicknameHistory
+import com.sns.infrastructure.data.member.MemberNicknameHistoryRepository
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 class MemberHistoryPersistenceAdapter(
     private val memberNicknameHistoryRepository: MemberNicknameHistoryRepository
-): MemberHistoryPersistencePort {
+) : MemberHistoryPersistencePort {
     override fun saveMemberHistory(memberNicknameHistory: MemberNicknameHistory) {
         memberNicknameHistoryRepository.save(memberNicknameHistory)
     }

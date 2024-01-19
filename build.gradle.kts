@@ -30,7 +30,7 @@ subprojects {
     dependencies {
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         developmentOnly("org.springframework.boot:spring-boot-devtools")
-        annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
+        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
         //kotlin
         implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -38,7 +38,7 @@ subprojects {
 
         // test
         testImplementation("org.springframework.boot:spring-boot-starter-test")
-        testImplementation ("org.jeasy:easy-random-core:5.0.0")
+        testImplementation("org.jeasy:easy-random-core:5.0.0")
         testImplementation("io.kotest:kotest-runner-junit5:5.3.2")
         testImplementation("io.kotest:kotest-assertions-core:5.3.2")
     }

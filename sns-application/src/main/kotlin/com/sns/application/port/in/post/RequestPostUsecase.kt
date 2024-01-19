@@ -13,8 +13,14 @@ interface RequestPostUsecase {
 
     fun getDailyPostCount(dailyPostCountCommand: DailyPostCountCommand): List<DailyPostCountResponse>
 
-    fun getPostsWithMemberIdAndCursor(memberId: Long, cursorRequest: CursorRequest): PageCursor<PostResponse>
+    fun getPostsWithMemberIdAndCursor(
+        memberId: Long,
+        cursorRequest: CursorRequest
+    ): PageCursor<PostResponse>
 
-    fun getPostsWithMemberIdsAndCursor(memberIds: List<Long>, cursorRequest: CursorRequest): PageCursor<PostResponse>
+    fun getPostsWithMemberIdsAndCursor(
+        memberIds: List<Long>,
+        cursorRequest: CursorRequest
+    ): PageCursor<PostResponse>
 
 }

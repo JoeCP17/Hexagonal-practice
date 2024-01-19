@@ -11,7 +11,11 @@ object TableRowMapperExtension {
         return RowMapper { rs, rowNum -> mapRow(rs, rowNum) }
     }
 
-    fun createSimpleJdbcInsert(columnNames: String, tableName: String, jdbcTemplate: JdbcTemplate): SimpleJdbcInsert {
+    fun createSimpleJdbcInsert(
+        columnNames: String,
+        tableName: String,
+        jdbcTemplate: JdbcTemplate
+    ): SimpleJdbcInsert {
         return SimpleJdbcInsert(jdbcTemplate)
             .withTableName(tableName)
             .usingGeneratedKeyColumns(columnNames)

@@ -4,7 +4,7 @@ import com.sns.application.dto.member.response.MemberHistoryResponse
 import com.sns.application.dto.member.response.MemberResponse
 import com.sns.domain.member.Member
 
-object MemberMapperFactory  {
+object MemberMapperFactory {
 
     fun toMemberResponse(member: Member): MemberResponse {
         return MemberResponse(

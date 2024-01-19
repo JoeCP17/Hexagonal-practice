@@ -1,7 +1,7 @@
 package com.sns.infrastructure.data.member.jdbc
 
-import com.sns.infrastructure.data.extension.TableRowMapperExtension
 import com.sns.domain.member.Member
+import com.sns.infrastructure.data.extension.TableRowMapperExtension
 import com.sns.infrastructure.data.member.MemberRepository
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource

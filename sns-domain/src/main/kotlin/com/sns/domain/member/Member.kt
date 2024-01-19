@@ -9,7 +9,7 @@ data class Member(
     val email: String,
     val birthDay: LocalDate,
     val createdAt: LocalDateTime = LocalDateTime.now(),
-    ) {
+) {
 
     init {
         validateNickname(nickName)
@@ -26,7 +26,7 @@ data class Member(
         )
     }
 
-    fun changeNickname(nickname: String) : Member {
+    fun changeNickname(nickname: String): Member {
         validateNickname(nickname)
         return this.copy(nickName = nickname)
     }

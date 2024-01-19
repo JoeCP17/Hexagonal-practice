@@ -1,8 +1,8 @@
 package com.sns.infrastructure.data.adapter
 
 import com.sns.application.port.out.member.MemberPersistencePort
-import com.sns.infrastructure.data.member.MemberRepository
 import com.sns.domain.member.Member
+import com.sns.infrastructure.data.member.MemberRepository
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
