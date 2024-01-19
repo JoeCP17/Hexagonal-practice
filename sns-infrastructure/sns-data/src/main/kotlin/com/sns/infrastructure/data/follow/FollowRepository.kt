@@ -7,4 +7,6 @@ interface FollowRepository {
     fun findAllByFromMemberId(fromMemberId: Long): List<Follow>
 
     fun save(follow: Follow): Follow
+
+    fun delete(follow: Follow): Follow
 }

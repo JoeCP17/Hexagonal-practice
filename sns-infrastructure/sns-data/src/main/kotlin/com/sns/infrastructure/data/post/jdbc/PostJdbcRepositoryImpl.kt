@@ -1,5 +1,6 @@
 package com.sns.infrastructure.data.post.jdbc
 
+import com.sns.application.dto.post.DailyPostCountCommand
 import com.sns.infrastructure.data.extension.TableRowMapperExtension
 import com.sns.infrastructure.data.post.PageHelper
 import com.sns.infrastructure.data.post.PostRepository
@@ -38,6 +39,17 @@ class PostJdbcRepositoryImpl(
         naemdParameterJdbcTemplate.batchUpdate(sql, params)
     }
 
+    override fun groupByCreatedDate(dailyPostCountCommand: DailyPostCountCommand): List<DailyPostCount> {
+        val sql = String.format(
+            "select member_id, date, count(id) as count from %s where member_id in (:memberIds) and date between :startDate and :endDate group by member_id, created_date",
+            TABLE
+        )
+
+        val params = BeanPropertySqlParameterSource(dailyPostCountCommand)
+
+        return naemdParameterJdbcTemplate.query(sql, params, DAILY_POST_COUNT_ROW_MAPPER)
+    }
+
     override fun findAllByMemberIdAndOffset(memberId: Long, pageable: Pageable): Page<Post> {
         val sql = String.format(
             "select * from %s where member_id = :memberId order by %s desc limit :size",
@@ -62,6 +74,41 @@ class PostJdbcRepositoryImpl(
 
         val params = MapSqlParameterSource()
             .addValue("memberId", memberId)
+            .addValue("size", size)
+
+        return naemdParameterJdbcTemplate.query(sql, params, POST_ROW_MAPPER)
+    }
+
+    override fun findAllByMemberIdsAndSize(memberIds: List<Long>, size: Long): List<Post> {
+        if (memberIds.isEmpty()) {
+            return emptyList()
+        }
+
+        val sql = String.format(
+            "select * from %s where memberId in (:memberIds) limit :size",
+            TABLE
+        )
+
+        val params = MapSqlParameterSource()
+            .addValue("memberIds", memberIds)
+            .addValue("size", size)
+
+        return naemdParameterJdbcTemplate.query(sql, params, POST_ROW_MAPPER)
+    }
+
+    override fun findAllByMemberIdAndIdAboutCursor(
+        memberId: Long,
+        id: Long,
+        size: Long
+    ): List<Post> {
+        val sql = String.format(
+            "select * from %s where memberId = :memberId and id < :id limit :size",
+            TABLE
+        )
+
+        val params = MapSqlParameterSource()
+            .addValue("memberId", memberId)
+            .addValue("id", id)
             .addValue("size", size)
 
         return naemdParameterJdbcTemplate.query(sql, params, POST_ROW_MAPPER)
@@ -117,7 +164,7 @@ class PostJdbcRepositoryImpl(
     }
 
     companion object {
-        const val TABLE = "com/sns/domain/post"
+        const val TABLE = "post"
 
         val DAILY_POST_COUNT_ROW_MAPPER = TableRowMapperExtension.rowMapper { rs, _ ->
             DailyPostCount(

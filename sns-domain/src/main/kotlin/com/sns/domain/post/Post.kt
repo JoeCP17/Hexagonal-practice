@@ -7,8 +7,8 @@ data class Post(
     val id: Long = 0L,
     val memberId: Long,
     val contents: String,
-    val createdDate: LocalDate,
-    val createdAt: LocalDateTime
+    val createdDate: LocalDate = LocalDate.now(),
+    val createdAt: LocalDateTime = LocalDateTime.now()
 ) {
     init {
         require(contents.isNotEmpty()) { "본문은 비어있으면 안됩니다." }
