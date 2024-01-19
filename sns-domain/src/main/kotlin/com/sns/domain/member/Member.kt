@@ -32,8 +32,8 @@ data class Member(
     }
 
 
-    private fun validateNickname(nickname: String) {
-        if (nickname.length > MAX_NICKNAME_LENGTH) {
+    private fun validateNickname(nickName: String) {
+        if (nickName.length > MAX_NICKNAME_LENGTH) {
             throw IllegalArgumentException("닉네임은 최대 ${MAX_NICKNAME_LENGTH}자까지 가능합니다.")
         }
     }

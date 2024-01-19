@@ -23,9 +23,9 @@ class MemberService(
      * 닉네임은 10자를 넘길 수 없다.
      */
     override fun registerMember(registerMemberCommand: RegisterMemberCommand) {
-        val member = registerMemberCommand.toDomain()
-        memberPersistencePort.saveMember(member)
-        memberHistoryPersistencePort.saveMemberHistory(member.toMemberNicknameHistory())
+        val beforeMember = registerMemberCommand.toDomain()
+        val afterMember = memberPersistencePort.saveMember(beforeMember)
+        memberHistoryPersistencePort.saveMemberHistory(afterMember.toMemberNicknameHistory())
     }
 
     /**
@@ -34,7 +34,7 @@ class MemberService(
      */
     override fun changeNickname(changeNicknameCommand: ChangeNicknameCommand) {
         val member = memberPersistencePort.getMemberByMemberId(changeNicknameCommand.memberId)
-        val afterMember = member.changeNickname(changeNicknameCommand.nickname)
+        val afterMember = member.changeNickname(changeNicknameCommand.nickName)
 
         memberPersistencePort.saveMember(afterMember)
         memberHistoryPersistencePort.saveMemberHistory(afterMember.toMemberNicknameHistory())

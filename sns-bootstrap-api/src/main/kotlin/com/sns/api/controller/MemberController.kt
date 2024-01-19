@@ -1,6 +1,7 @@
 package com.sns.api.controller
 
 import com.sns.api.dto.BaseResponseDto
+import com.sns.application.dto.member.request.ChangeNicknameCommand
 import com.sns.application.dto.member.request.RegisterMemberCommand
 import com.sns.application.dto.member.response.MemberHistoryResponse
 import com.sns.application.dto.member.response.MemberResponse
@@ -20,11 +21,9 @@ class MemberController(
         requestMemberUsecase.registerMember(registerMemberCommand)
     }
 
-    @PostMapping("{memberId}/change-nickname")
-    fun changeNickname(@PathVariable memberId: String,
-                       @RequestBody changeNicknameCommand: RegisterMemberCommand,
-    ) {
-        requestMemberUsecase.registerMember(changeNicknameCommand)
+    @PostMapping("/change-nickname")
+    fun changeNickname(@RequestBody changeNicknameCommand: ChangeNicknameCommand) {
+        requestMemberUsecase.changeNickname(changeNicknameCommand)
     }
 
     @GetMapping("/{memberId}")

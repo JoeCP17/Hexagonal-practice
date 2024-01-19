@@ -50,14 +50,14 @@ class MemberNicknameHistoryRepositoryImpl(
     }
 
     companion object {
-        const val TABLE = "MemberNicknameHistory"
+        const val TABLE = "member_nickname_history"
 
         val ROW_MAPPER = TableRowMapperExtension.rowMapper { rs, _ ->
             MemberNicknameHistory(
                 id = rs.getLong("id"),
                 memberId = rs.getLong("memberId"),
                 nickName = rs.getString("nickname"),
-                createdAt = rs.getTimestamp("createdAt").toLocalDateTime()
+                createdAt = rs.getTimestamp("created_at").toLocalDateTime()
             )
         }
     }

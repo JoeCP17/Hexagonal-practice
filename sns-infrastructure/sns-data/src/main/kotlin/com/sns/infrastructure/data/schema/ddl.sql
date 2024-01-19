@@ -12,10 +12,10 @@ create table member
 create table member_nickname_history
 (
     id int auto_increment,
-    memberId int not null,
+    member_id int not null,
     nickname varchar(20) not null,
     created_at datetime not null,
-    constraint member_nickname_history._id_uindex
+    constraint member_nickname_history_id_uindex
         primary key (id)
 );
 
@@ -63,7 +63,7 @@ create table timeline
     memberId int not null,
     postId int not null,
     created_at datetime not null,
-    constraint timeline._id_uindex
+    constraint timeline_id_uindex
         primary key (id)
 );
 

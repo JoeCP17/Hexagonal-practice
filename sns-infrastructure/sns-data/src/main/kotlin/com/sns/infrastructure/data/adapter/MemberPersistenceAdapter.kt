@@ -17,8 +17,8 @@ class MemberPersistenceAdapter(
         return memberRepository.findById(memberId)
     }
 
-    override fun saveMember(member: Member) {
-        memberRepository.save(member)
+    override fun saveMember(member: Member): Member {
+        return memberRepository.save(member)
     }
 
 }

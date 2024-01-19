@@ -64,7 +64,7 @@ class MemberJdbcRepositoryImpl(
 
     private fun update(member: Member): Member {
         val sql = String.format(
-            "update %s set email = :email, nickname = :nickname, birthday = :birthday where id = :id",
+            "update %s set email = :email, nickName = :nickName, birthday = :birthDay where id = :id",
             TABLE
         )
 
@@ -74,13 +74,13 @@ class MemberJdbcRepositoryImpl(
     }
 
     companion object {
-        const val TABLE = "com/sns/domain/member"
+        const val TABLE = "member"
 
         val ROW_MAPPER = TableRowMapperExtension.rowMapper { rs, _ ->
             Member(
                 id = rs.getLong("id"),
                 email = rs.getString("email"),
-                nickName = rs.getString("nickname"),
+                nickName = rs.getString("nickName"),
                 birthDay = rs.getDate("birthday").toLocalDate(),
                 createdAt = rs.getTimestamp("created_at").toLocalDateTime(),
             )
