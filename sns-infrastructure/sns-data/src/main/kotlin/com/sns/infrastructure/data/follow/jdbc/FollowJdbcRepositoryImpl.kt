@@ -15,7 +15,7 @@ class FollowJdbcRepositoryImpl(
 ) : FollowRepository {
     override fun findAllByFromMemberId(fromMemberId: Long): List<Follow> {
         val sql = String.format(
-            "select * from %s where from_member_id = ?",
+            "select * from %s where fromMemberId =?",
             TABLE
         )
 
@@ -39,7 +39,7 @@ class FollowJdbcRepositoryImpl(
         }
 
         val sql = String.format(
-            "delete from %s where id = :id and from_member_id = :fromMemberId and to_member_id = :toMemberId",
+            "delete from %s where id = :id and fromMemberId = :fromMemberId and toMemberId = :toMemberId",
             TABLE
         )
 
@@ -73,8 +73,8 @@ class FollowJdbcRepositoryImpl(
         val ROW_MAPPER: (ResultSet, Int) -> Follow = { rs, _ ->
             Follow(
                 id = rs.getLong("id"),
-                fromMemberId = rs.getLong("from_member_id"),
-                toMemberId = rs.getLong("to_member_id"),
+                fromMemberId = rs.getLong("fromMemberId"),
+                toMemberId = rs.getLong("toMemberId"),
                 createdAt = rs.getTimestamp("created_at").toLocalDateTime()
             )
         }

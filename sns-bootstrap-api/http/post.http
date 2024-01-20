@@ -1,0 +1,18 @@
+@memberId = 1
+
+### 게시물 생성
+POST localhost:8080/api/v1/post/create
+Content-Type: application/json
+
+{
+  "memberId": 1,
+  "contents": "테스트 게시물 본문입니다."
+}
+
+### 게시물 조회 수 조회
+GET localhost:8080/api/v1/post/daily-post-count?memberId=1&firstDate=2024-01-20&lastDate=2024-12-12
+Content-Type: application/json
+
+### 타임라인 조회
+GET localhost:8080/api/v1/post/members/{{memberId}}/timeline?key=1&size=10
+Content-Type: application/json

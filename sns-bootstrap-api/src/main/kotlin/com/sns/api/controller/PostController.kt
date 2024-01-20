@@ -8,10 +8,7 @@ import com.sns.application.dto.post.DailyPostCountResponse
 import com.sns.application.dto.post.PostResponse
 import com.sns.application.port.`in`.post.GetTimelinePostUsecase
 import com.sns.application.port.`in`.post.RequestPostUsecase
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 
 @RestController
@@ -26,13 +23,13 @@ class PostController(
         requestPostUsecase.getDailyPostCount(dailyPostCountCommand)
 
     @PostMapping("/create")
-    fun create(createPostCommand: CreatePostCommand): PostResponse {
+    fun create(@RequestBody createPostCommand: CreatePostCommand): PostResponse {
         return requestPostUsecase.create(createPostCommand)
     }
 
     @GetMapping("/members/{memberId}/timeline")
     fun getTimeline(
-        memberId: Long,
+        @PathVariable memberId: Long,
         cursorRequest: CursorRequest
     ): PageCursor<PostResponse> {
         return getTimelinePostUsecase.getTimeline(memberId, cursorRequest)

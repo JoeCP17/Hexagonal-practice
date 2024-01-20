@@ -1,0 +1,13 @@
+@fromMemberId =2
+@toMemberId=1
+
+@memberId = 2
+
+### 팔로우 요청
+POST localhost:8080/api/v1/follow/request/{{fromMemberId}}/{{toMemberId}}
+
+### 팔로우 요청 삭제
+PATCH localhost:8080/api/v1/follow/cancel/{{fromMemberId}}/{{toMemberId}}
+
+### 팔로우 목록 조회
+GET localhost:8080/api/v1/follow/followers/{{memberId}}

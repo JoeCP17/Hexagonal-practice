@@ -9,13 +9,15 @@ import com.sns.application.dto.post.PostResponse
 import com.sns.application.mapper.PostMapperFactory
 import com.sns.application.port.`in`.post.GetTimelinePostUsecase
 import com.sns.application.port.`in`.post.RequestPostUsecase
+import com.sns.application.port.out.follow.FollowMemberPersistencePort
 import com.sns.application.port.out.post.PostPersistencePort
 import com.sns.domain.post.Post
 import org.springframework.stereotype.Service
 
 @Service
 class PostService(
-    private val postPersistencePort: PostPersistencePort
+    private val postPersistencePort: PostPersistencePort,
+    private val followPersistencePort: FollowMemberPersistencePort
 ) : RequestPostUsecase, GetTimelinePostUsecase {
     override fun create(createPostCommand: CreatePostCommand): PostResponse {
         val requestPostDomain = PostMapperFactory.toDomainByCommand(createPostCommand)
@@ -37,7 +39,27 @@ class PostService(
         memberId: Long,
         cursorRequest: CursorRequest
     ): PageCursor<PostResponse> {
-        TODO("Not yet implemented")
+        val followers = followPersistencePort.getFollowers(memberId)
+
+        if (followers.isEmpty()) {
+            return PageCursor(
+                cursorRequest = cursorRequest,
+                body = emptyList()
+            )
+        }
+
+        val followingMemberIds = followers.map { it.toMemberId }.toList()
+
+        val posts = postPersistencePort.findAllByMemberIdsAndCursor(
+            memberIds = followingMemberIds,
+            cursorId = cursorRequest.key!!,
+            size = cursorRequest.size
+        )
+
+        return PageCursor(
+            cursorRequest = cursorRequest.next(getNextIdx(posts)),
+            body = posts.map(PostMapperFactory::toResponse)
+        )
     }
 
     override fun getPostsWithMemberIdAndCursor(

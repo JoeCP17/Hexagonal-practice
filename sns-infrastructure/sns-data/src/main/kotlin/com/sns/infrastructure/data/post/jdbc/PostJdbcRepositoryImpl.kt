@@ -28,7 +28,7 @@ class PostJdbcRepositoryImpl(
 
     override fun bulkInsert(posts: List<Post>) {
         val sql = String.format(
-            "insert into %s (memberId, contents, createdDate, createdAt) values (:memberId, :contents, :createdDate, :createdAt)",
+            "insert into %s (memberId, contents, created_date, created_at) values (:memberId, :contents, :createdDate, :createdAt)",
             TABLE
         )
 
@@ -41,7 +41,7 @@ class PostJdbcRepositoryImpl(
 
     override fun groupByCreatedDate(dailyPostCountCommand: DailyPostCountCommand): List<DailyPostCount> {
         val sql = String.format(
-            "select member_id, date, count(id) as count from %s where member_id in (:memberIds) and date between :startDate and :endDate group by member_id, created_date",
+            "select memberId, created_date, count(id) from %s where memberId = :memberId and created_date between :firstDate and :lastDate group by memberId, created_date",
             TABLE
         )
 
@@ -52,7 +52,7 @@ class PostJdbcRepositoryImpl(
 
     override fun findAllByMemberIdAndOffset(memberId: Long, pageable: Pageable): Page<Post> {
         val sql = String.format(
-            "select * from %s where member_id = :memberId order by %s desc limit :size",
+            "select * from %s where memberId = :memberId order by %s desc limit :size",
             TABLE,
             PageHelper.orderBy(pageable.sort)
         )
@@ -153,7 +153,7 @@ class PostJdbcRepositoryImpl(
 
     private fun getCount(memberId: Long): Long {
         val sql = String.format(
-            "select count(id) from %s where member_id = :memberId",
+            "select count(id) from %s where memberId = :memberId",
             TABLE
         )
 
@@ -168,16 +168,16 @@ class PostJdbcRepositoryImpl(
 
         val DAILY_POST_COUNT_ROW_MAPPER = TableRowMapperExtension.rowMapper { rs, _ ->
             DailyPostCount(
-                memberId = rs.getLong("member_id"),
-                date = rs.getDate("date").toLocalDate(),
-                count = rs.getLong("count")
+                memberId = rs.getLong("memberId"),
+                date = rs.getDate("created_date").toLocalDate(),
+                count = rs.getLong("count(id)")
             )
         }
 
         val POST_ROW_MAPPER = TableRowMapperExtension.rowMapper { rs, _ ->
             Post(
                 id = rs.getLong("id"),
-                memberId = rs.getLong("member_id"),
+                memberId = rs.getLong("memberId"),
                 contents = rs.getString("content"),
                 createdDate = rs.getDate("created_date").toLocalDate(),
                 createdAt = rs.getTimestamp("created_at").toLocalDateTime(),
