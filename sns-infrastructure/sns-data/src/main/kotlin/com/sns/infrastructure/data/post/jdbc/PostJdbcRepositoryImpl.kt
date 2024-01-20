@@ -116,17 +116,15 @@ class PostJdbcRepositoryImpl(
 
     override fun findAllByMemberIdsAndIdAboutCursor(
         memberIds: List<Long>,
-        id: Long,
         size: Long
     ): List<Post> {
         val sql = String.format(
-            "select * from %s where memberId = :memberId and id < :id limit :size",
+            "select * from %s where memberId = In (:memberIds) limit :size",
             TABLE
         )
 
         val params = MapSqlParameterSource()
             .addValue("memberIds", memberIds)
-            .addValue("id", id)
             .addValue("size", size)
 
         return naemdParameterJdbcTemplate.query(sql, params, POST_ROW_MAPPER)

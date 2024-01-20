@@ -23,6 +23,6 @@ interface PostRepository {
 
     fun findAllByMemberIdAndIdAboutCursor(memberId: Long, id: Long, size: Long): List<Post>
 
-    fun findAllByMemberIdsAndIdAboutCursor(memberIds: List<Long>, id: Long, size: Long): List<Post>
+    fun findAllByMemberIdsAndIdAboutCursor(memberIds: List<Long>, size: Long): List<Post>
 
 }

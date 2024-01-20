@@ -34,10 +34,9 @@ class PostPersistenceAdapter(
 
     override fun findAllByMemberIdsAndCursor(
         memberIds: List<Long>,
-        cursorId: Long,
         size: Long
     ): List<Post> {
-        return postRepository.findAllByMemberIdsAndIdAboutCursor(memberIds, cursorId, size)
+        return postRepository.findAllByMemberIdsAndIdAboutCursor(memberIds,  size)
     }
 
     override fun findAllByMemberIdsAndDescAboutCursor(

@@ -52,7 +52,6 @@ class PostService(
 
         val posts = postPersistencePort.findAllByMemberIdsAndCursor(
             memberIds = followingMemberIds,
-            cursorId = cursorRequest.key!!,
             size = cursorRequest.size
         )
 
@@ -98,7 +97,7 @@ class PostService(
 
         return postPersistencePort.findAllByIdAndMemberIdAndDescAboutCursor(
             memberId = memberId,
-            cursorId = cursorRequest.key!!,
+            cursorId = cursorRequest.key,
             size = cursorRequest.size
         )
     }
@@ -116,7 +115,6 @@ class PostService(
 
         return postPersistencePort.findAllByMemberIdsAndCursor(
             memberIds = memberIds,
-            cursorId = cursorRequest.key!!,
             size = cursorRequest.size
         )
     }

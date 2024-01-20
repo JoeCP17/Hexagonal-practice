@@ -19,6 +19,6 @@ interface PostPersistencePort {
     ): List<Post>
 
     fun findAllByMemberIdAndDescAboutCursor(memberId: Long, size: Long): List<Post>
-    fun findAllByMemberIdsAndCursor(memberIds: List<Long>, cursorId: Long, size: Long): List<Post>
+    fun findAllByMemberIdsAndCursor(memberIds: List<Long>,  size: Long): List<Post>
     fun findAllByMemberIdsAndDescAboutCursor(memberIds: List<Long>, size: Long): List<Post>
 }

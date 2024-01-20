@@ -15,7 +15,7 @@ class FollowJdbcRepositoryImpl(
 ) : FollowRepository {
     override fun findAllByFromMemberId(fromMemberId: Long): List<Follow> {
         val sql = String.format(
-            "select * from %s where fromMemberId =?",
+            "select * from %s where fromMemberId = :fromMemberId",
             TABLE
         )
 
